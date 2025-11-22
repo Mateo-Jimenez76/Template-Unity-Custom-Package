@@ -1,6 +1,5 @@
-//https://docs.unity3d.com/6000.0/Documentation/Manual/upm-manifestPkg.html
 {
-  "name": "com.[company-name].[package-name]",
+  "name": "com.company-name.package-name",
   "version": "1.2.3",
   "displayName": "Package Example",
   "description": "This is an example package",
