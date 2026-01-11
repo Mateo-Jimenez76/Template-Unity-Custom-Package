@@ -1,19 +1,20 @@
+using System.ComponentModel;
 using System.IO;
 using UnityEditor;
 using UnityEngine.UIElements;
 public class CustomSettingsProvider : SettingsProvider
 {
-    private SerializedObject SerializedSettings;
 
     //---SerializedProperties for each setting---
     SerializedProperty debugLogsProp;
     SerializedProperty warningLogsProp;
     SerializedProperty errorLogsProp;
 
+    private SerializedObject SerializedSettings;
+
     //Constructor
-    //SettingsScope determines where the settings are stored (User(Preferences) or Project(Project Settings))
-    //Project scope is only effects the current project, while User scope is global to the user
-    public CustomSettingsProvider(string path, SettingsScope scope = SettingsScope.Project)
+
+    public CustomSettingsProvider(string path, SettingsScope scope = CustomSettings.SCOPE)
         : base(path, scope) { }
 
 
@@ -45,7 +46,7 @@ public class CustomSettingsProvider : SettingsProvider
     public static SettingsProvider CreateCustomSettingsProvider()
     {
         //The path is what shows up in the Settings window
-        var provider = new CustomSettingsProvider($"Project/{CustomSettings.PACKAGENAME}", SettingsScope.Project);
+        var provider = new CustomSettingsProvider($"Project/{CustomSettings.PACKAGENAME}", CustomSettings.SCOPE);
         return provider;
     }
 }

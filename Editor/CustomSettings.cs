@@ -3,17 +3,21 @@ using UnityEditor;
 public class CustomSettings : ScriptableObject
 {
     // Name of your package (without spaces or special characters)
-    private const string PACKAGENAME ="ExamplePackage";
+    public const string PACKAGENAME ="ExamplePackage";
 
     // "Editor" restricts your ability to use these settings at runtime
     // So "Resources" is a better location if runtime access is needed
-    private const string PARENTFOLDER = "Resources";
+    public const string PARENTFOLDER = "Resources";
+
+    // SettingsScope determines where the settings are stored (User(Preferences) or Project(Project Settings))
+    // Project scope is only effects the current project, while User scope is global to the user
+    public const SettingsScope SCOPE = SettingsScope.Project;
 
     public const string SETTINGSPATH = $"Assets/{PARENTFOLDER}/{PACKAGENAME}Settings.asset";
 
     // --- Settings for your package ---
     [SerializeField] private bool debugLogs;
-    //Functions rea made for each varible to provide read-only access
+    // Functions rea made for each varible to provide read-only access
     public bool DebugLogsEnabled() => debugLogs;
 
     [SerializeField] private bool warningLogs;
